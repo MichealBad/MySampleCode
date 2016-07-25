@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>500px</key>
+	<dict>
+		<key>oauth_toke_secret</key>
+		<string>R0rz5aJc4bkcS9i6ii6xHCtZGV1YpLgDh8O4rY47</string>
+		<key>oauth_token</key>
+		<string>4j7pqL4EaQSFKe5Cj6ugCGNocSHVnHWIhDPqu9vt</string>
+		<key>consumerKey</key>
+		<string>LBGxWbqDAxuBhQJfkuTtLJufxSEswGfmxEMeAz0t</string>
+		<key>consumerSecret</key>
+		<string>paOFIIErHbo0E7Yj5Vs3nJjCYgxkI1z50jV7k7SJ</string>
+	</dict>
+</dict>
+</plist>

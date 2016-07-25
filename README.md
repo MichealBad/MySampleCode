@@ -1,8 +1,9 @@
 # MySampleCode
 
-我自己学习时所作到代码
+我自己学习时所作的代码
 
-GooglePhotosTrandistion: 一个模仿GooglePhoto之前所拥有的圆形展开以及消失的动画（目前手势操作动画会有bug。根据Rob Napier和Mughunth Kumar在《IOS编程实战》中所说明，苹果的自定义转场手势不支持layer动画。所以也许得自己计算百分比）。
+GooglePhotosTrandistion: 一个模仿GooglePhoto之前所拥有的圆形展开以及消失的动画（目前手势操作动画会有bug。根据Rob Napier和Mughunth Kumar在《IOS编程实战》中所说明，苹果的自定义转场手势不支持layer动画。所以得自己计算百分比，并且布置mask的面积）。
+
 ![image](https://github.com/MichealBad/MySampleCode/blob/master/shots/2.png?raw=true)
 ![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/1.png?raw=true)
 ![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/3.png?raw=true)

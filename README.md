@@ -8,11 +8,11 @@ GooglePhotosTrandistion: 一个模仿GooglePhoto之前所拥有的圆形展开�
 ![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/3.png?raw=true)
 
 Musicgram：为www.500px.com所做的第三方app。
-![image](https://github.com/MichealBad/MySampleCode/blob/master/shots/4.png?raw=true)
-![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/5.png?raw=true)
+![image](https://github.com/MichealBad/MySampleCode/blob/master/shots/4.PNG?raw=true)
+![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/5.PNG?raw=true)
 
 RMPlayer：运用AVPlayer+AVAssetResourceLoader共同协作缓存流媒体于本地。
-![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/6.png?raw=true)
+![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/6.PNG?raw=true)
 
 WPAnimation：win10中常见的转菊花。
-![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/7.png?raw=true)
+![iamge](https://github.com/MichealBad/MySampleCode/blob/master/shots/7.PNG?raw=true)

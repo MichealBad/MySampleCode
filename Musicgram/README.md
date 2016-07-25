@@ -9,3 +9,7 @@ up to now fetures:
 2. click the user head icon to see a profile og the user
 
 3. click the commment button below a picture to see all the commment of this pic. 
+
+
+![image](https://github.com/MichealBad/MySampleCode/blob/master/shots/4.PNG?raw=true)
+![image](https://github.com/MichealBad/MySampleCode/blob/master/shots/5.PNG?raw=true)

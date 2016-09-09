@@ -24,7 +24,7 @@ class Services {
             return parameters[service]
         }
         set {
-            if let value = newValue where !Services.parametersEmpty(value) {
+            if let value = newValue  where !Services.parametersEmpty(value) {
                 parameters[service] = value
             }
         }

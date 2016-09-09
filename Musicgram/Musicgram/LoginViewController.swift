@@ -107,7 +107,7 @@ extension LoginViewController {
         oauthswift.authorize_url_handler = self.get_url_handler()
         
         oauthswift.authorizeWithCallbackURL( NSURL(string: "michealbad-musicgram://oauth-callback/500px")!,success: {credential, response, parameters in
-                self.showTokenAlert(serviceParameters["name"], credential: credential)
+            self.showTokenAlert(serviceParameters["name"], credential: credential)
             }, failure: { error in
                 print(error.localizedDescription)
         })
@@ -133,3 +133,4 @@ extension LoginViewController {
         }
     }
 }
+

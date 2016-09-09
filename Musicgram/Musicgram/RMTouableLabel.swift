@@ -14,7 +14,7 @@ class RMTouableLabel: UILabel {
     var textContainer: NSTextContainer?
     var layoutManager: NSLayoutManager?
     
-    let kTextSize: CGFloat = 15.0
+    let kTextSize: CGFloat = 14.0
     
     let pattern = "@[a-z1-9_]*\\s|@[a-z1-9_]*|#[a-z1-9_]*\\s|#[a-z1-9_]*"
     
@@ -76,20 +76,19 @@ class RMTouableLabel: UILabel {
     }
     
     override func drawTextInRect(rect: CGRect) {
-        //self.attributedText?.drawInRect(rect)
-        
         let range = self.layoutManager?.glyphRangeForTextContainer(self.textContainer!)
-        let point = CGPointZero
+        let point = CGPoint.zero
         
         self.layoutManager?.drawGlyphsForGlyphRange(range!, atPoint: point)
         self.layoutManager?.drawBackgroundForGlyphRange(range!, atPoint: point)
     }
     
+    
     /*
-    override func drawRect(rect: CGRect) {
-        let range = self.layoutManager?.glyphRangeForTextContainer(self.textContainer!)
-        self.layoutManager?.drawGlyphsForGlyphRange(range!, atPoint: CGPointZero)
-        self.layoutManager?.drawBackgroundForGlyphRange(range!, atPoint: CGPointZero)
-    }*/
-
+     override func drawRect(rect: CGRect) {
+     let range = self.layoutManager?.glyphRangeForTextContainer(self.textContainer!)
+     self.layoutManager?.drawGlyphsForGlyphRange(range!, atPoint: CGPointZero)
+     self.layoutManager?.drawBackgroundForGlyphRange(range!, atPoint: CGPointZero)
+     }*/
+    
 }

@@ -26,7 +26,6 @@ class PhotoCommentsViewController: UITableViewController {
         tableView.estimatedRowHeight = 50.0
         
         title = "Comments"
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .Done, target: self, action: "pop")
         
         self.initTableFooter()
         self.startFetchingComment()
@@ -45,20 +44,22 @@ class PhotoCommentsViewController: UITableViewController {
     }
     
     func startFetchingComment(){
-        let url = Five100px.Router.Comments(photoID, self.currentPage).URLRequest.URL
-        let auth = AuthHeaderString().getAuthHeaderString(url, httpMethod: "GET", body: nil)
-        print(url?.absoluteString)
         
         self.fecthingComment = true
-        Alamofire.request(.GET, url!, headers: ["Authorization":auth as String]).responseCollection() {
-            (Data: Response<[Comment],NSError>) in
-            if Data.result.error == nil {
-                //print(Data.result.value == nil)
-                self.comments.appendContentsOf(Data.result.value!)
+        
+        Comment.fetchCommentsAsync(self.photoID) {
+            comments in
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                self.comments.appendContentsOf(comments)
                 self.fecthingComment = false
                 self.currentPage += 1
-                self.tableView.reloadData()
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
             }
+            
         }
     }
     

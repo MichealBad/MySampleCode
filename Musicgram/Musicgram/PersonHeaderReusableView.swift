@@ -76,5 +76,5 @@ class PersonHeaderReusableView: UICollectionReusableView {
         self.userIntroLabel?.text = intro
         self.userIntroLabel?.textColor = withColor
     }
-        
+    
 }

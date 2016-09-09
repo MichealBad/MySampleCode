@@ -15,11 +15,7 @@ private let reuseHeaderIdentifier = "HeaderPostCell"
 private let reusePersonIdentifier = "PersonHeader"
 
 class PersonCollectionViewController: UICollectionViewController {
-    
-    var singer = ["KODALINE","Foster_the_People","Ellie_Goulding","One_Republic","The_Strokes"]
-    var song = ["In_a_Perfect_World","Supermodel","Halcyon_Days","Native","Comedown_Machine"]
-    var songImage = [UIImage]()
-    
+
     var userID: Int? = 14800033
     var userName: String? = "594178994"
     var user: User?
@@ -105,42 +101,41 @@ class PersonCollectionViewController: UICollectionViewController {
     }
     
     func initHeader() {
-        let url = Five100px.Router.UserProfile(userID!).URLRequest.URL
-        let auth = AuthHeaderString().getAuthHeaderString(url, httpMethod: "GET", body: nil)
-        //print(url?.absoluteString)
-        
-        Alamofire.request(.GET, url!, headers: ["Authorization":auth as String]).responseObject({
-            (data: Response<User,NSError>) in
-            if data.result.error == nil {
-                self.user = data.result.value
+        User.fetchUser(self.userID!) {
+            user in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.user = user
                 self.collectionView?.reloadSections(NSIndexSet(index: 0))
             }
-        })
+        }
     }
     
     func startFetchingPhotos() {
-        let url = Five100px.Router.UserProfilePhotos(self.userID!, self.currentPage, Five100px.ImageSize.Small).URLRequest.URL
-        let auth = AuthHeaderString().getAuthHeaderString(url, httpMethod: "GET", body: nil)
-        //print(url?.absoluteString)
         
         self.fecthingPhotos = true
-        Alamofire.request(.GET, url!, headers: ["Authorization":auth as String]).responseCollection({
-            (data: Response<[PhotoInfo],NSError>) in
-            if data.result.error == nil {
+        print(self.currentPage)
+        let url = Five100px.Router.userProfilePhotos(self.userID!, self.currentPage, Five100px.ImageSize.small).URLRequest.URL
+        
+        PhotoInfo.fetchPhotosAsync(url!) {
+            photos in
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                 let lastItem = self.photos.count
                 
-                self.photos.appendContentsOf(data.result.value!)
+                self.photos.appendContentsOf(photos)
                 
                 let indexPaths = (lastItem..<self.photos.count).map{
                     NSIndexPath(forRow: $0, inSection: 0)
                 }
                 
-                self.collectionView?.insertItemsAtIndexPaths(indexPaths)
-                
-                self.fecthingPhotos = false
-                self.currentPage += 1
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.collectionView?.insertItemsAtIndexPaths(indexPaths)
+                    
+                    self.currentPage += 1
+                    self.fecthingPhotos = false
+                }
             }
-        })
+        }
     }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -238,7 +233,6 @@ class PersonCollectionViewController: UICollectionViewController {
         let postCell = cell as! CollectionViewCell
         postCell.set(imageURL: NSURL(string: photo.url)!)
     }
-    
     /*
      override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
      cell.alpha = 1

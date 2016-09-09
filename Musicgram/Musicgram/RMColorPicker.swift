@@ -22,20 +22,21 @@ class RMColorPicker: NSObject {
         super.init()
     }
     
-    func set(image image: UIImage) {
+    func set(image: UIImage) {
         self.image = image
         avColor = nil
     }
     
     func averageColor() -> UIColor? {
         
-        print(":i am bang!")
+        print(":i am bang!", terminator: "")
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let rgba: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>.alloc(4)
+        let rgba: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer<UInt8>(bitPattern: 4)
+        
         let context = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, CGBitmapInfo.ByteOrder32Big.rawValue | CGImageAlphaInfo.PremultipliedLast.rawValue)
         
-        CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.image?.CGImage)
+        CGContextDrawImage(context, CGRect(x: 0, y: 0, width: 1, height: 1), self.image?.CGImage)
         
         let alpha = CGFloat(rgba.advancedBy(3).memory) / 255.0
         if alpha > 0 {
@@ -57,7 +58,7 @@ class RMColorPicker: NSObject {
         
         self.avColor = (avColor == nil ? self.averageColor() : avColor)
         
-        let hsta = UnsafeMutablePointer<CGFloat>.alloc(4)
+        let hsta = UnsafeMutablePointer<CGFloat>(bitPattern: 4)
         if self.avColor?.getHue(hsta.advancedBy(0), saturation: hsta.advancedBy(1), brightness: hsta.advancedBy(2), alpha: hsta.advancedBy(3)) == true {
             return UIColor(hue: hsta.advancedBy(0).memory, saturation: min(hsta.advancedBy(1).memory + removeS,1.0), brightness: hsta.advancedBy(2).memory*0.6, alpha: hsta.advancedBy(3).memory)
         }
@@ -68,7 +69,7 @@ class RMColorPicker: NSObject {
         
         self.avColor = (avColor == nil ? self.averageColor() : avColor)
         
-        let hsta = UnsafeMutablePointer<CGFloat>.alloc(4)
+        let hsta = UnsafeMutablePointer<CGFloat>(bitPattern: 4)
         if self.avColor?.getHue(hsta.advancedBy(0), saturation: hsta.advancedBy(1), brightness: hsta.advancedBy(2), alpha: hsta.advancedBy(3)) == true {
             return UIColor(hue: max(hsta.advancedBy(0).memory - removeH,0.0), saturation: min(hsta.advancedBy(1).memory + removeS,1.0), brightness: hsta.advancedBy(2).memory, alpha: hsta.advancedBy(3).memory)
         }

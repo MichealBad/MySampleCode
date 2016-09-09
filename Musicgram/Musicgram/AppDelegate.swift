@@ -11,6 +11,8 @@ import OAuthSwift
 
 public let kRMKeyTextColor = UIColor(red: 65.0/255.0, green: 98.0/255.0, blue: 124.0/255.0, alpha: 1)
 public let kRMCommonTextColor = UIColor(red: 38.0/255.0, green: 38.0/255.0, blue: 38.0/255.0, alpha: 1)
+public let kRMTitleTextColor = UIColor(red: 110.0/255.0, green: 109.0/255.0, blue: 118.0/255.0, alpha: 1)
+public let kRMSubTitleColor = UIColor(red: 138.0/255.0, green: 138.0/255.0, blue: 139.0/255.0, alpha: 1)
 
 
 extension AppDelegate {
@@ -29,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
@@ -39,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }*/
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    func application(app: UIApplication, open url: NSURL, options: [String : Any]) -> Bool {
         //print("call-back00")
         self.applicationHandleOpenURL(url)
         return true

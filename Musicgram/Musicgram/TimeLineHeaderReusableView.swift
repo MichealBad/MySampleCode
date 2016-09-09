@@ -25,7 +25,7 @@ class TimeLineHeaderReusableView: UICollectionReusableView {
     
     func set(timeLine: String, num: Int, withColor color: UIColor) {
         
-        self.timeLine!.frame = CGRectMake(14, 0, 200, self.bounds.height)
+        self.timeLine!.frame = CGRect(x: 14, y: 0, width: 200, height: self.bounds.height)
         self.timeLine?.font = UIFont.systemFontOfSize(14)
         self.timeLine?.textColor = color
         self.timeLine!.text = "\(timeLine) \(num)Posts"

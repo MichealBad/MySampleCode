@@ -33,5 +33,6 @@ class IndicatorFooterReusableView: UICollectionReusableView {
     func footerStopAnimating() {
         self.indicator.stopAnimating()
     }
+
         
 }
